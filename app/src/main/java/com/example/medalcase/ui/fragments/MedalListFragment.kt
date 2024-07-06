@@ -48,14 +48,13 @@ class MedalListFragment : Fragment() {
             }
         }
 
-        viewModel.list.observe(viewLifecycleOwner){
-            val adapter = GridAdapter(it)
+        viewModel.list.observe(viewLifecycleOwner) {
+            val adapter = GridAdapter(it,requireContext())
             binding.recyclerview.layoutManager = layoutManager
             binding.recyclerview.adapter = adapter
-
         }
 
-    return view
+        return view
     }
 
 

@@ -8,13 +8,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MedalListViewModel : ViewModel(){
+class MedalListViewModel : ViewModel() {
     var medalRepository = MedalRepository()
     var list = MutableLiveData<List<MedalModel>>()
 
     init {
         getData()
     }
+
     fun getData() {
         CoroutineScope(Dispatchers.Main).launch {
             list.value = medalRepository.getMedalData()

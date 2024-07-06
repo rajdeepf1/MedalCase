@@ -14,6 +14,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-       Utils.changeStatusBarColor(this)
+        Utils.changeStatusBarColor(this)
     }
 }
