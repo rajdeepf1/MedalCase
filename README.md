@@ -11,8 +11,7 @@ Welcome to the Medal Case app! This application showcases all your medals in a g
 
 ## Screenshots
 
-![Medal Grid View](Screenshot_20240706_175017.png)
-![Medal Details](path_to_screenshot_2)
+<img src="./Screenshot_20240706_175017.png" alt="Medal Grid View" width="300" height="600">
 
 ## Installation
 
