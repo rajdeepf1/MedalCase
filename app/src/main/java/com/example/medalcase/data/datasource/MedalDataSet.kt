@@ -17,7 +17,7 @@ class MedalDataSet {
         medalListModelForPersonalRecords.add(MedalListModel(3,"Fastest 5K","00:00",R.drawable.fastest_5k,true))
         medalListModelForPersonalRecords.add(MedalListModel(4,"10K","00:00:00",R.drawable.fastest_10k,true))
         medalListModelForPersonalRecords.add(MedalListModel(5,"Half Marathon","00:00",R.drawable.virtual_half_marathon_race,true))
-        medalListModelForPersonalRecords.add(MedalListModel(6,"Marathon","Not Yet",R.drawable.fastest_marathon,true))
+        medalListModelForPersonalRecords.add(MedalListModel(6,"Marathon","Not Yet",R.drawable.fastest_marathon,false))
         medalList.add(MedalModel(1,"Personal Records",medalListModelForPersonalRecords))
 
         val medalListModelForVirtualRaces  = ArrayList<MedalListModel>()

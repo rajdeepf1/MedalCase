@@ -16,6 +16,22 @@
         android:textColor="@color/header_text_color"
         />
 
-
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    >
+    <TextView
+        android:id="@+id/headerTextOutOf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="294dp"
+        android:background="@color/header_background_color"
+        android:padding="@dimen/header_padding"
+        android:textColor="@color/grid_item_outof_text_color"
+        android:textSize="@dimen/grid_header_text_size"
+        android:textStyle="bold"
+        />
+</FrameLayout>
 
 </RelativeLayout>
