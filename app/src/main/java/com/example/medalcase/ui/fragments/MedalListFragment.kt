@@ -1,33 +1,28 @@
 package com.example.medalcase.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.medalcase.R
+import com.example.medalcase.databinding.FragmentMedalListBinding
+import com.example.medalcase.ui.adapters.GridAdapter
+import com.example.medalcase.ui.viewmodels.MedalListViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MedalListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MedalListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding: FragmentMedalListBinding? = null
+
+    private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -35,26 +30,35 @@ class MedalListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_medal_list, container, false)
-    }
+        _binding = FragmentMedalListBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MedalListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MedalListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val viewModel = ViewModelProvider(this).get(
+            MedalListViewModel::class.java
+        )
+        binding.medalListViewModel = viewModel
+        binding.lifecycleOwner = this
+
+        val layoutManager = GridLayoutManager(requireContext(), 2)
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when ((binding.recyclerview.adapter as GridAdapter).getItemViewType(position)) {
+                    GridAdapter.VIEW_TYPE_HEADER -> 2
+                    GridAdapter.VIEW_TYPE_ITEM -> 1
+                    else -> -1
                 }
             }
+        }
+
+        viewModel.list.observe(viewLifecycleOwner){
+            val adapter = GridAdapter(it)
+            binding.recyclerview.layoutManager = layoutManager
+            binding.recyclerview.adapter = adapter
+
+        }
+
+    return view
     }
+
+
 }

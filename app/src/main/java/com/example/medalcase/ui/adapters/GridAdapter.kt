@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Visibility
+import com.example.medalcase.R
 import com.example.medalcase.data.models.MedalListModel
 import com.example.medalcase.data.models.MedalModel
+import com.example.medalcase.databinding.ItemGridBinding
 
 class GridAdapter(private val sections: List<MedalModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -15,6 +18,7 @@ class GridAdapter(private val sections: List<MedalModel>) : RecyclerView.Adapter
         const val VIEW_TYPE_HEADER = 0
         const val VIEW_TYPE_ITEM = 1
     }
+
 
     private val items: List<Any> = sections.flatMap { listOf(it.heading) + it.medalListModel }
 
@@ -50,19 +54,29 @@ class GridAdapter(private val sections: List<MedalModel>) : RecyclerView.Adapter
 
 class SectionHeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val headerTitle = view.findViewById<TextView>(R.id.headerTitle)
+        //private val headerTextOutOf = view.findViewById<TextView>(R.id.headerTextOutOf)
 
     fun bind(header: String) {
         headerTitle.text = header
+        if (header == "Personal Records"){
+//            if (headerTextOutOf.visibility == View.INVISIBLE){
+//                headerTextOutOf.visibility == View.VISIBLE
+//                headerTextOutOf.text = "4 of 6"
+//            }else{
+//                headerTextOutOf.visibility = View.INVISIBLE
+//            }
+        }
+
     }
 }
 
 class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val itemTitle = view.findViewById<TextView>(R.id.itemTitle)
     private val itemImage = view.findViewById<ImageView>(R.id.itemImage)
-
+    private val itemSubTitle = view.findViewById<TextView>(R.id.itemSubTitle)
     fun bind(item: MedalListModel) {
         itemTitle.text = item.title
-        // Load the image using Glide
         itemImage.setImageResource(item.image)
+        itemSubTitle.text = item.subTitle
     }
 }

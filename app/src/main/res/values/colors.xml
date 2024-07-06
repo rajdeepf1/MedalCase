@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="header_background_color">#F7F7F7</color>
+    <color name="header_text_color">#333333</color>
+    <color name="toolbar_header_text_color">#FFFFFF</color>
+    <color name="toolbar_background_color">#63C6D4</color>
+    <color name="gridview_items_title_text_color">#000000</color>
+    <color name="grid_item_outof_text_color">#666666</color>
 </resources>

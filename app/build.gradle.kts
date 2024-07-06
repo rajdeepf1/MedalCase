@@ -7,9 +7,11 @@ android {
     namespace = "com.example.medalcase"
     compileSdk = 34
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
+        dataBinding =true
     }
+
 
     defaultConfig {
         applicationId = "com.example.medalcase"
@@ -49,4 +51,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    //view model
+    implementation ("androidx.lifecycle:lifecycle-viewmodel:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
 }
