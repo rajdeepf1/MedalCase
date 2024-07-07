@@ -14,6 +14,7 @@ import com.example.medalcase.data.models.MedalListModel
 import com.example.medalcase.data.models.MedalModel
 import com.example.medalcase.databinding.ItemGridBinding
 import com.example.medalcase.databinding.ItemSectionHeaderBinding
+import com.example.medalcase.utils.Utils
 import com.example.medalcase.utils.Utils.showToast
 
 class GridAdapter(private val sections: List<MedalModel>, private val context: Context) :
@@ -57,7 +58,7 @@ class GridAdapter(private val sections: List<MedalModel>, private val context: C
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = items[position]) {
             is String -> (holder as SectionHeaderViewHolder).bind(item)
-            is MedalListModel -> (holder as ItemViewHolder).bind(item, context)
+            is MedalListModel -> (holder as ItemViewHolder).bind(item, context, holder.itemView)
         }
     }
 
@@ -84,15 +85,17 @@ class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val itemImage = view.findViewById<ImageView>(R.id.itemImage)
     private val itemSubTitle = view.findViewById<TextView>(R.id.itemSubTitle)
     private val ll_gridItems = view.findViewById<LinearLayout>(R.id.ll_gridItems)
-    fun bind(item: MedalListModel, context: Context) {
+    fun bind(item: MedalListModel, context: Context, view: View) {
         itemTitle.text = item.title
         itemImage.setImageResource(item.image)
         itemSubTitle.text = item.subTitle
         if (!item.isActive) {
             ll_gridItems.alpha = 0.4f
+            ll_gridItems.isEnabled = false
         }
         ll_gridItems.setOnClickListener {
             showToast(context, "${item.title} Clicked!", Toast.LENGTH_SHORT)
+            Utils.flipView(view = view)
         }
     }
 }

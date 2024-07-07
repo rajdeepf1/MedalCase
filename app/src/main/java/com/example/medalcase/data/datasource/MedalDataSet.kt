@@ -53,7 +53,7 @@ class MedalDataSet {
                 5,
                 "Half Marathon",
                 "00:00",
-                R.drawable.virtual_half_marathon_race,
+                R.drawable.fastest_half_marathon,
                 true
             )
         )
@@ -72,7 +72,7 @@ class MedalDataSet {
         medalListModelForVirtualRaces.add(
             MedalListModel(
                 1,
-                "Virtual Half Marathon",
+                "Virtual Half Marathon \n Race",
                 "00:00",
                 R.drawable.virtual_half_marathon_race,
                 true
@@ -81,7 +81,7 @@ class MedalDataSet {
         medalListModelForVirtualRaces.add(
             MedalListModel(
                 2,
-                "Tokyo-Hakone Ekiden",
+                "Tokyo-Hakone Ekiden \n 2020",
                 "00:00:00",
                 R.drawable.tokyo_kakone_ekiden,
                 true
